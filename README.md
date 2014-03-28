@@ -19,7 +19,7 @@ Toolset is tested now on OS X but should work on other Unix-like systems.
 Quick start
 ===========
 
-- Get latest copy of toolset:
+- Get latest copy of toolset (easy way):
 
     ```bash
     mkdir -p ~/bin
@@ -28,7 +28,7 @@ Quick start
     ```
     If ~/bin is not in your $PATH you can add it:
     ```bash
-    echo "export PATH+=\"~/bin:\$PATH\" >> ~/.bashrc
+    echo "export PATH+=\"~/bin:\$PATH\"" >> ~/.bashrc
     . ~/.bashrc
     ```
 
@@ -38,7 +38,7 @@ Quick start
     rr --init
     ```
 
-    Editor will open. Set up configure wariables with your prefrable server and directory on server.
+    Editor will be opened. Set config variables with your server and a remote directory.
 
 - Run your commands on server. Example:
 

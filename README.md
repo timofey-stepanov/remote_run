@@ -1,25 +1,26 @@
-Remote Run
-==========
+Remote Run (rr)
+===============
 
-Toolset is designed to simplify developing process when
-you should often perform some actions on remote server but want to edit files locally.
-Tool will be helpful for different serverside developers.
-Using this tool you can edit code in your preferable editor or IDE (QtCreator, Sublime, Gvim, etc)
-but easily run compiler on server whith custom build environment.
+Remote Run is designed to simplify developing process when
+you should often perform some actions on remote server but want to edit files locally
+using your preferable editor or IDE (QtCreator, Sublime, etc).
 
+To execute command on your file tree on remote server simply prefix it with "rr ".
+Tool will sync all changes from local file tree to server, execute the command,
+and sync it's results back.
 
 System requirements
-==================
-Your local should be able to run python3 scripts and have rsync tool
-(it is sertanly available for Linux, OS X and other Unix-like systems).
-Your remote server should be accesseible through rsync and ssh.
+===================
 
-Toolset is tested now on OS X but should work on other Unix-like systems.
+You should have python3 and rsync locally.
+Your remote server should be accessible through rsync and ssh.
+
+Tool is tested on OS X but should work on other Unix-like systems.
 
 Quick start
 ===========
 
-- Get latest copy of toolset (easy way):
+- **Install:**
 
     ```bash
     mkdir -p ~/bin
@@ -32,21 +33,35 @@ Quick start
     . ~/.bashrc
     ```
 
-- Go to your project dir and configure remote run there:
+- **Configure:** Go to your project's root directory and configure remote run there:
 
     ```bash
     rr --init
     ```
 
     Editor will be opened. Set config variables with your server and a remote directory.
+    Config will be saved into .remoterunrc in current directory.
 
-- Run your commands on server. Example:
+- **Use:** Run your commands on server. Example:
 
     ```bash
     rr gcc hello.cpp -o hello
+    rr ./hello
     ```
     Or launch shell:
     ```bash
     rr
     ```
 
+Hints
+=====
+
+- To set environment variables place them between `rr` and your command:
+    ```bash
+    rr BUILD_VERBOSE=1 make
+    ```
+
+- For pipes use `bash -c`
+    ```bash
+    rr bash -c "cat file.txt | sort | uniq | wc -l"
+    ```
